@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jayram — Observation will bring What are you searching</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #faf7f2;
+    --warm: #f0ebe1;
+    --sand: #d4c5a9;
+    --earth: #8b7355;
+    --deep: #3d2f1e;
+    --sage: #7a8c6e;
+    --text: #4a3f32;
+    --light: #6b5d4f;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Georgia', serif; background: var(--cream); color: var(--text); line-height: 1.8; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(250,247,242,0.92); backdrop-filter: blur(8px);
+    padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(212,197,169,0.3);
+  }
+  .nav-logo { font-size: 1.3rem; color: var(--deep); letter-spacing: 0.08em; font-style: italic; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--light); font-size: 0.88rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; font-family: 'Georgia', serif; }
+  .nav-links a:hover { color: var(--earth); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 6rem 2rem 4rem;
+    background: linear-gradient(160deg, var(--cream) 0%, var(--warm) 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero-circle {
+    position: absolute; border-radius: 50%; opacity: 0.12;
+    animation: breathe 6s ease-in-out infinite;
+  }
+  .c1 { width: 400px; height: 400px; border: 1px solid var(--earth); top: 10%; left: 50%; transform: translateX(-50%); }
+  .c2 { width: 600px; height: 600px; border: 1px solid var(--sand); top: 5%; left: 50%; transform: translateX(-50%); animation-delay: 1s; }
+  .c3 { width: 200px; height: 200px; border: 1px solid var(--earth); top: 15%; left: 50%; transform: translateX(-50%); animation-delay: 2s; }
+  @keyframes breathe {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.12; }
+    50% { transform: translateX(-50%) scale(1.04); opacity: 0.18; }
+  }
+  .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sage); margin-bottom: 1.5rem; }
+  .hero-name { font-size: clamp(3rem, 8vw, 6rem); color: var(--deep); letter-spacing: 0.05em; font-weight: normal; margin-bottom: 1rem; font-style: italic; }
+  .hero-tagline { font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--earth); max-width: 560px; line-height: 1.6; margin-bottom: 0.6rem; }
+  .hero-sub { font-size: 0.95rem; color: var(--light); font-style: italic; margin-bottom: 3rem; }
+  .hero-cta {
+    display: inline-block; padding: 0.9rem 2.4rem;
+    border: 1px solid var(--earth); color: var(--earth);
+    text-decoration: none; letter-spacing: 0.15em; font-size: 0.82rem; text-transform: uppercase;
+    transition: all 0.3s; font-family: 'Georgia', serif;
+  }
+  .hero-cta:hover { background: var(--earth); color: var(--cream); }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 820px; margin: 0 auto; }
+  .section-label { font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--sage); margin-bottom: 1rem; }
+  .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--deep); font-weight: normal; margin-bottom: 2rem; font-style: italic; }
+  .divider { width: 40px; height: 1px; background: var(--sand); margin: 1.5rem 0 2rem; }
+
+  /* ABOUT */
+  #about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .about-text p { color: var(--light); margin-bottom: 1.2rem; font-size: 1.02rem; }
+  .about-quote {
+    border-left: 2px solid var(--sand); padding-left: 1.5rem;
+    font-size: 1.1rem; color: var(--earth); font-style: italic; line-height: 1.9;
+  }
+
+  /* BLOG */
+  #blog { background: var(--warm); }
+  .blog-grid { display: grid; gap: 2rem; }
+  .blog-card {
+    background: var(--cream); padding: 2rem; border-bottom: 1px solid var(--sand);
+    transition: transform 0.3s;
+  }
+  .blog-card:hover { transform: translateY(-3px); }
+  .blog-tag { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.7rem; }
+  .blog-card h3 { font-size: 1.2rem; color: var(--deep); font-weight: normal; margin-bottom: 0.7rem; font-style: italic; }
+  .blog-card p { color: var(--light); font-size: 0.95rem; }
+  .read-more { display: inline-block; margin-top: 1rem; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--earth); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+  .read-more:hover { border-color: var(--earth); }
+
+  /* SERVICES */
+  #services { background: var(--cream); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 1rem; }
+  .service-card { padding: 2rem; border: 1px solid var(--sand); text-align: center; }
+  .service-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .service-card h3 { font-size: 1rem; color: var(--deep); font-weight: normal; margin-bottom: 0.8rem; letter-spacing: 0.05em; }
+  .service-card p { font-size: 0.9rem; color: var(--light); line-height: 1.7; }
+
+  /* CONTACT */
+  #contact { background: var(--warm); }
+  .contact-intro { color: var(--light); font-size: 1.02rem; max-width: 520px; margin-bottom: 2.5rem; }
+  form { display: grid; gap: 1.2rem; max-width: 560px; }
+  input, textarea, select {
+    width: 100%; padding: 0.9rem 1rem; background: var(--cream);
+    border: 1px solid var(--sand); color: var(--text); font-family: 'Georgia', serif;
+    font-size: 0.95rem; outline: none; transition: border-color 0.3s;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--earth); }
+  textarea { height: 130px; resize: vertical; }
+  select { appearance: none; cursor: pointer; }
+  .submit-btn {
+    padding: 0.95rem 2rem; background: var(--earth); color: var(--cream);
+    border: none; font-family: 'Georgia', serif; font-size: 0.85rem;
+    letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.3s;
+  }
+  .submit-btn:hover { background: var(--deep); }
+  .success-msg { display: none; color: var(--sage); font-style: italic; margin-top: 0.5rem; }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep); color: var(--sand); text-align: center;
+    padding: 2.5rem; font-size: 0.85rem; letter-spacing: 0.08em;
+  }
+  footer span { color: var(--earth); font-style: italic; }
+
+  @media (max-width: 640px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Loving Awareness</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#blog">Journey</a></li>
+    <li><a href="#services">Counselling</a></li>
+    <li><a href="#contact">Connect</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-circle c1"></div>
+  <div class="hero-circle c2"></div>
+  <div class="hero-circle c3"></div>
+  <p class="hero-eyebrow">Consciousness · Meditation · Awareness</p>
+  <h1 class="hero-name">Loving Awareness</h1>
+  <p class="hero-tagline">"Observation will bring What are you searching"</p>
+  <p class="hero-sub">— Observe your search itself — What are you Searching and Why? —</p>
+  <a href="#contact" class="hero-cta">Begin Your Journey</a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">Who I Am</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2 class="section-title">A Fellow Traveller on the Path Within</h2>
+        <div class="divider"></div>
+        <p>My name is Jayram. For many years I have been exploring the nature of consciousness, the stillness beneath thought, and the quiet miracle of simple awareness.</p>
+        <p>I did not find these teachings in books alone — I found them by sitting with my own searching, by observing the one who was looking.</p>
+        <p>Today I walk alongside others who feel a pull toward something deeper — who sense there is more to life than the surface of things.</p>
+      </div>
+      <div>
+        <blockquote class="about-quote">
+          "The moment you truly observe the search itself, the searcher begins to dissolve — and what remains is a quiet, open presence that was always already here."
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / JOURNEY -->
+<section id="blog">
+  <div class="container">
+    <p class="section-label">My Journey</p>
+    <h2 class="section-title">Reflections from the Path</h2>
+    <div class="divider"></div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <p class="blog-tag">Consciousness</p>
+        <h3>What Does It Mean to Be Aware?</h3>
+        <p>Awareness is not something we achieve — it is what we are when we stop trying to be something else. In stillness, I began to notice the one who was noticing...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+      <div class="blog-card">
+        <p class="blog-tag">Meditation</p>
+        <h3>The Breath That Brought Me Home</h3>
+        <p>My early meditations were full of effort — trying to silence the mind, trying to feel peace. The turning point came when I simply watched the trying itself...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+      <div class="blog-card">
+        <p class="blog-tag">Observation</p>
+        <h3>Observing the Observer</h3>
+        <p>There is a profound moment when practice turns inward — when you stop watching thoughts and begin to ask: who is the one watching? This question changed everything...</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">How I Can Help</p>
+    <h2 class="section-title">Counselling & Guidance</h2>
+    <div class="divider"></div>
+    <p style="color:var(--light); max-width:580px; margin-bottom: 2.5rem;">Each session is a gentle space — no prescriptions, no rigid methods. Together we observe, listen, and allow clarity to emerge naturally.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🌿</div>
+        <h3>One-on-One Counselling</h3>
+        <p>Personal sessions to explore your inner world, patterns of thought, and the nature of your experience.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌀</div>
+        <h3>Meditation Guidance</h3>
+        <p>Learn to sit with yourself — not to silence the mind, but to understand it with gentle, open awareness.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✦</div>
+        <h3>Consciousness Exploration</h3>
+        <p>Deep conversations on the nature of self, awareness, and what lies beneath the surface of everyday experience.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🕊</div>
+        <h3>Ongoing Support</h3>
+        <p>For those walking a longer path — regular, sustained companionship through life's questions and transitions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Reach Out</p>
+    <h2 class="section-title">Begin with a Conversation</h2>
+    <div class="divider"></div>
+    <p class="contact-intro">If something here has resonated with you, please reach out. There is no pressure — just an open invitation to connect and explore together.</p>
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <select>
+        <option value="" disabled selected>What are you seeking? (optional)</option>
+        <option>One-on-One Counselling</option>
+        <option>Meditation Guidance</option>
+        <option>Consciousness Exploration</option>
+        <option>Ongoing Support</option>
+        <option>Just a conversation</option>
+      </select>
+      <textarea placeholder="Share whatever feels right — what you're experiencing, what you're searching for..."></textarea>
+      <button type="submit" class="submit-btn">Send Message</button>
+      <p class="success-msg" id="success">✦ &nbsp;Thank you. I will be in touch soon, with care.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p><span>Loving Awareness</span> &nbsp;·&nbsp; "Observation will bring What are you searching" &nbsp;·&nbsp; © 2026</p>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('success').style.display = 'block';
+    e.target.reset();
+    setTimeout(() => document.getElementById('success').style.display = 'none', 5000);
+  }
+</script>
+</body>
+</html>
